@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import logoMemo from "./assets/logo_memo.png";
 import "./App.css";
 import animationData from "./assets/Animation.json";
 import Lottie from "lottie-react";
 // import animationData from "./assets/animation.json";
 import memoAnimation from "./assets/memo_Lottie.json";
-const App = () => {
+import PhoneVerification from "./components/PhoneVerification";
+
+const Home = () => {
   const [isCardsHovered, setIsCardsHovered] = useState(false);
 
   return (
@@ -53,9 +56,12 @@ const App = () => {
               می‌کنه!
             </p>
           </div>
-          <button className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:shadow-outline transition float-left">
+          <Link
+            to="/verify"
+            className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:shadow-outline transition float-left"
+          >
             شروع
-          </button>
+          </Link>
         </div>
 
         {/* Card 2: راهنمای خرید هدیه */}
@@ -68,12 +74,26 @@ const App = () => {
               ممو کمکت می‌کنه تا بهترین عطر رو برای هدیه انتخاب کنی
             </p>
           </div>
-          <button className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:shadow-outline transition float-left">
+          <Link
+            to="/verify"
+            className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-6 rounded focus:outline-none focus:shadow-outline transition float-left"
+          >
             شروع
-          </button>
+          </Link>
         </div>
       </div>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/verify" element={<PhoneVerification />} />
+      </Routes>
+    </Router>
   );
 };
 
