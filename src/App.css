@@ -1,0 +1,15 @@
+@keyframes rotateY {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Apply the animation dynamically */
+.animate-wobble {
+  animation: rotateY 2s linear infinite;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
